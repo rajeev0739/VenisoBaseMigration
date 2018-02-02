@@ -1,0 +1,19 @@
+.classpath
+.project
+.settings/
+.externalToolBuilders/
+target/
+*.bkp
+*.bkp.*
+*_bkp.*
+${sys:*/
+bin/
+${sys:invalid.activity.exception.location}/
+.metadata/
+
+#Maven "target" files
+target/
+
+#IDE Files
+*.iml
+.idea/
