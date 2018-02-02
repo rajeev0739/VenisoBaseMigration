@@ -35,7 +35,7 @@ public class FileProcesser {
 	
 	
 /*	 
- * Csv/Excel File Header Format 
+ * Excel File Header Format ....( .xlsx file only get processed) 
 index 0     MSISDN	
 index 1		SubscriberID	
 index 2		Subscription_pricepoint	
@@ -109,9 +109,10 @@ index 15	User_Language
 						else if(columnindex==1){
 							// index 1		SubscriberID	Mapped to CustomerTransactionId in BaaS
 							tempCellValue = "";
-							if(cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
-								tempCellValue =  String.valueOf(cell.getNumericCellValue());
-				
+							cell.setCellType(Cell.CELL_TYPE_STRING);
+							tempCellValue=cell.getStringCellValue().trim();
+							if(StringUtils.isNumeric(tempCellValue)){
+								userSubscription.setCustomerTransactionId(tempCellValue);
 							}else{
 								noOfRecordsSkippedDueToInvalidCustomerTransactionId++;
 								skipRecord=true;
